@@ -1,0 +1,607 @@
+/*load normalize CDN*/
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css');
+
+/*load google fonts*/
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|EB+Garamond|Oswald');
+
+/*load fontawesome*/
+@import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
+
+/*===============================================
+base setting
+=================================================*/
+/*set base box-sizing setting*/
+* {
+  box-sizing: border-box;      
+}
+
+/*set body default font, body setting and set backgroud image on the top*/
+body {
+  max-width: 90%;
+  margin: 0 auto;  
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.3em;
+  color: #2e484c;
+  background-image: url("images/lilly.png"); 
+  background-color: #f6f9fc;
+  background-repeat: repeat-x;
+  background-position: top center;
+}
+
+/*hyperlink base setting*/
+a {
+  font-family: 'Oswald', Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+}
+
+/*hyperlink intro link, visited, hover active behaviour*/
+a:link,
+a:visited {
+  color: #488C4E;  
+ }
+  
+a:hover, 
+a:active {
+  color: #3d8a9f;
+  text-decoration: underline;
+}
+
+/*fix abbr dotted line underneath and define abbr setting*/
+abbr[title] {
+  border-bottom: none;
+  cursor: inherit;
+  text-decoration: none;
+  color: #488C4E;
+  letter-spacing: 0.01em;
+}
+
+/*===============================================
+.page-wrapper
+=================================================*/
+/*define paragraph setting*/
+.page-wrapper p {
+  margin: 0.75em 0;
+  line-height: 1.2em;
+}
+
+/*define h3 setting and common background image setting*/
+h3 {  
+  font-family: 'Oswald', Arial, sans-serif;
+  font-size: 1.3em;
+  font-weight: normal; 
+  text-transform: uppercase;
+  letter-spacing: 0.01em; 
+  text-align: left;  
+  background-repeat: no-repeat;
+  background-size: 28px 30px;
+  padding-left: 48px;   
+}
+
+/*add pink rose image before main content h3*/
+.preamble h3, .supporting h3, .participation h3, .benefits h3, .requirements h3 {  
+  background-image: url("images/main_flower.png");
+}
+
+/*add red rose image before sidebar h3*/
+.sidebar h3 {
+  background-image: url("images/sidebar_flower.png");
+}
+
+/*===============================================
+.intro
+=================================================*/
+/*set anchor point for position of following elements and children elements*/
+.intro {
+  position: relative;
+}
+
+/*define header text common setting*/
+.intro header {
+  padding-top: 20px;
+  padding-bottom: 70px;
+  text-align: center;
+}
+
+.intro h1, .intro h2 {
+  text-shadow: 0 0 13px #E26DFF , 0 0 5px #E26DFF;
+  padding: 0 10%;
+  margin: 0;  
+  font-weight: normal;
+  color: rgba(255,255,255,0.6); 
+}
+
+/*define header h1 setting*/
+.intro h1 {
+  margin-top: 0.5em;
+  font-family: 'Dancing Script', Georgia, cursive;
+  font-size: 2.8em;
+  letter-spacing: 0.3em;
+  text-transform: uppercase; 
+}
+
+/*define header h2 setting*/
+.intro h2 { 
+  font-size: 1.4em;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  padding-bottom: 1.3em;
+}
+
+/*change abbr default color to white with opacity to match with h2 color*/
+.intro h2 abbr[title] {
+  color: rgba(255,255,255,0.6);
+}
+
+/*slide h1 header from right to left*/
+h1 {
+   animation-name: zoomOut;
+}
+
+/*keyframe setting for h1 sliding from right to left*/
+/*@keyframes slideleft {
+  from {
+    margin-left: 100%;
+    width: 300%; 
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+  }
+}*/
+
+/*define specific link behaviour for intro, together with same change in footer and last paragraph of requirements */
+.intro a:hover, footer a:hover, .requirements p:last-child a:hover {
+  color: #fff;
+  background-color: #3d8a9f;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/*add download fontawesome icon before file link*/
+.intro a:before {
+  font-family: 'Font Awesome\ 5 Free';
+  content: "\f019";
+  font-size: 18px;
+  font-weight: 900;
+  padding-right: 6px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/*===============================================
+float into two columns
+=================================================*/
+/*float paragraphs until requirement paragraph to the right except the last paragraph of requirements*/
+.summary, .preamble, .explanation, .participation, .benefits, .requirements p, .requirements h3 {
+  float: right;
+  width: 65%;
+  text-align: justify;
+}
+
+/*clear floating for last paragraph of requirements, clearfix. footer needs to be at the top*/
+.requirements p:last-child:before {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+/*float sidebar to the left, exclude footer, footer at top*/
+.sidebar {
+  float: left;
+  width: 25%;
+  position: absolute; 
+}
+
+/*===============================================
+footer - put footer at the top
+=================================================*/
+/*define footer margin setting*/
+footer {
+  margin-top: 0.8em;    
+}
+
+/*define hyperlink setting and put line underneath*/
+footer a {
+  display: inline-block;
+  border-bottom: solid 2px #4C7852; 
+  padding-right: 5px;
+}
+
+/*add line between links as seperator*/
+footer a:not(:first-child){
+    border-left:1px solid #4C7852;
+}
+
+/*add fontawsome icon before text*/
+ /*define common setting for five fontawsome icon*/
+footer a:before { 
+  font-weight: 900;  
+  font-size: 18px;
+  padding-right: 9px;
+  vertical-align: middle;
+}
+
+/*add html fontawsome icon*/
+footer a.zen-validate-html:before { 
+  font-family: 'Font Awesome 5 Brands';  
+  content: "\f13b"; 
+}
+
+/*add css fontawsome icon*/
+footer a.zen-validate-css:before { 
+  font-family: 'Font Awesome 5 Brands';
+  content: "\00a0 \00a0 \f13c";
+}
+
+/*add license fontawsome icon*/
+footer a.zen-license:before { 
+  font-family: 'Font Awesome\ 5 Free';
+  content: "\00a0 \00a0 \f20a"; 
+}
+
+/*add accessibility fontawsome icon*/
+footer a.zen-accessibility:before { 
+  font-family: 'Font Awesome 5 Brands';
+  content: "\00a0 \00a0 \f368";
+}
+
+/*add github fontawsome icon*/
+footer a.zen-github:before { 
+  font-family: 'Font Awesome 5 Brands';
+  content: "\00a0 \00a0 \f09b";
+}
+
+/*===============================================
+.desing-archives
+=================================================*/
+/*move design-archives view all designs to the top of the design-selection, next button remain in normal position*/
+.design-archives nav .viewall {
+  display: block;
+  position: absolute;
+  top: 30px;
+  width: 100%;
+}
+
+/*===============================================
+.design-archives .viewall
+=================================================*/
+/*define button setting*/
+.design-archives .viewall a {
+  display: inline-block;
+  padding: 15px 25px;
+  font-family: 'EB Garamond', Georgia, serif;
+  opacity: 0.9;
+  font-size: 0.9em;
+  cursor: pointer;
+  text-align: center; 
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  margin: 0 auto;
+}
+
+/*define viewall button hover effect to change color*/
+.design-archives .viewall a:hover {
+  background-color: #488C4E;
+}
+
+/*define button active behaviour*/
+.design-archives .viewall a:active {
+  background-color: #488C4E;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/*===============================================
+.sidebar
+=================================================*/
+/*define sidebar list li tag*/
+.sidebar li {  
+  padding: 0.8em;  
+  list-style: none;
+  line-height: 1.2em;
+}
+
+/*===============================================
+.design-selection
+=================================================*/
+/*add automatic number to each design name*/
+.design-selection li {
+  counter-increment: myIndex;
+  list-style: none;
+}
+
+.design-selection li::before {
+  content:counter(myIndex);
+}
+
+/*add margin space on top*/
+.design-selection {
+  margin-top: 8em;
+}
+
+/*line up design name and designer name*/
+/*insert break and space after design-name*/
+.design-name::after {
+  content: "\A \00a0 \00a0 \00a0 \00a0 \00a0 \00a0 \00a0";
+  white-space: pre;
+}
+
+/*insert space before design-name*/
+.design-name:before {
+  content: "\00a0 \00a0 \00a0 \00a0 \00a0";
+}
+
+/*insert dash before designer-name*/
+.designer-name:before {
+  content: " - ";
+}
+
+/*add lightgrey background to every second design option*/
+.design-selection li:nth-child(even) {
+  background-color: lightgrey;
+}
+
+/*add margin between design-selection, design-archives and zen-resources*/
+.design-selection { 
+  margin-bottom: 2.2em;
+}
+
+/*update default hyperlink link and visited behaviour for sidebar*/
+.design-selection li a:link,
+.design-selection li a:visited {
+  color: #2e484c;  
+}
+
+/*update default link hover and active behaviour for design-selection*/
+.design-selection li a:hover,
+.design-selection li a:active {
+  color: #3d8a9f;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/*define designer-name setting*/
+.designer-name {
+  font-style: italic;
+  font-family: 'EB Garamond', Arial, sans-serif;
+  text-transform: none;
+}
+
+/*===============================================
+.design-archives and .zen-resources
+=================================================*/
+/*add soft line on top of each list of the zen-resources except the first list */
+.zen-resources li:not(:first-child) {
+  border-top: solid 1px #d9e3dc;
+}
+
+/*change abbr color to match with other text on the same line*/
+.zen-resources a abbr[title] {
+  color: #2e484c;
+}
+
+/*zen-resources hyperlink link, visited, hover active behaviour*/
+.zen-resources a:link, 
+.design-archives .next a:link,
+.zen-resources a:visited,
+.design-archives .next a:visited {
+  color: #2e484c;  
+  font-family: 'EB Garamond', Arial, sans-serif;
+ }
+  
+.zen-resources a:hover, 
+.design-archives .next a:hover,
+.zen-resources a:active,
+.design-archives .next a:active {
+  color: #3d8a9f;
+  text-decoration: underline; 
+}
+
+/*===============================================
+.requirements last paragraph
+=================================================*/
+/*add line break in the last paragraph of requirements*/
+.requirements p:last-child a:nth-child(2)::before, .requirements p:last-child a:nth-child(3)::before {
+  content: "\A";
+  white-space: pre;
+}
+
+/*define setting for last paragraphe of requirements at the bottom of the page, background image in 100% to cross the whole width of body, 90% of the browser*/
+.requirements p:last-child {
+  width: 100%;
+  max-height: 214px;
+  padding: 1em 12%;
+  color: white;   
+  background-image: url("images/lilly.png");
+  background-color: #f6f9fc;
+  background-position: center;
+  background-repeat: repeat-x;
+  background-size: auto;
+  font-size: 1.2em;
+  font-style: italic;
+  text-align: center;
+  line-height: 2em;
+}
+
+/*define link font setting in last paragraph of requirements*/
+.requirements p:last-child a {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: normal;  
+}
+
+/*===============================================
+flying butterfly animation
+=================================================*/
+/*define right wing common setting*/
+header h1:before, header h2:before, .view-css:before  {
+	transform: rotate3d(0, 0, 0, 180deg); 
+	transform-origin: center right;
+	animation-name: rwani;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;    
+}
+
+/*define left wing common setting*/
+header h1:after, header h2:after, .view-css:after {
+  transform-origin: center right;
+  animation-name: lwani;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;   
+}
+
+/*define keyframe for right wing*/
+/*chrome etc.*/
+@keyframes rwani {
+    from {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    30% {
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    50% {
+        transform: rotate3d(0, 1, 0, 100deg);
+    }
+    70%{
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+    to{
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+}
+
+
+/*define keyframe for left wing*/
+/*chrome etc.*/
+@keyframes lwani {
+    from {
+        transform: rotate3d(0, 1, 0, 0deg);
+    }
+    30%  {
+        transform: rotate3d(0, 1, 0, 0deg);
+    }
+    50% {
+        transform: rotate3d(0, 1, 0, 80deg);
+    }
+    70%{
+        transform: rotate3d(0, 1, 0, 00deg);
+    }
+    to{
+        transform: rotate3d(0, 1, 0, 00deg);
+    }
+}
+
+/*position orange butterfly close to header h1*/
+header h1:before {
+  position: absolute;
+  left: 2%;
+  top: 12%;
+  width: 60px;
+  height: 92px;
+  content: url("images/blue_big.png");
+  animation-duration: 3s; 
+}
+
+header h1:after {
+  position: absolute;
+  left: 2%;
+  top: 12%;
+  width: 60px;
+  height: 92px;  
+  content: url("images/blue_big.png");
+  animation-duration: 3s;
+}
+
+/*position orange butterfly close to header h2*/
+header h2:before {
+  position: absolute;
+  right: 10%;
+  top: 38%;
+  width: 65px;
+  height: 95px;  
+  content: url("images/orange_big.png");
+  animation-duration: 1s;
+}
+
+header h2:after {
+  position: absolute;
+  right: 10%;
+  top: 38%;
+  width: 65px;
+  height: 95px;  
+  content: url("images/orange_big.png");
+  animation-duration: 1s; 
+}
+
+/*position blue small butterfly close to resources*/
+.view-css:before {
+  position: absolute;
+  right: 0%;
+  top: 76%;
+  width: 40px;
+  height: 63px;
+  content: url("images/blue_small.png");
+  animation-duration: 1s;  
+}
+
+.view-css:after {
+  position: absolute;
+  right: 0%;
+  top: 76%;
+  width: 40px;
+  height: 63px;
+  content: url("images/blue_small.png");
+  animation-duration: 1s; 
+}
+
+@-webkit-keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
